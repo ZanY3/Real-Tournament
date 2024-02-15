@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
-    public float speed = 20;
-
-
-    private void Update()
+    // Start is called before the first frame update
+    void Start()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
-        Destroy(gameObject, 3);
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
