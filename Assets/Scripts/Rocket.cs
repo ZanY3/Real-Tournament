@@ -12,4 +12,5 @@ public class Rocket : MonoBehaviour
         transform.position += transform.forward * speed * Time.deltaTime;
         Destroy(gameObject, 3);
     }
+
 }
