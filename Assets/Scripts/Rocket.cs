@@ -6,6 +6,7 @@ public class Rocket : MonoBehaviour
 {
     
     public float speed = 20;
+    public GameObject explosion;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class Rocket : MonoBehaviour
         {
             health.Damage(10);
         }
-
+        Instantiate(explosion, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }
