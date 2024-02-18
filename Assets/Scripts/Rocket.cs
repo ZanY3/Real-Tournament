@@ -4,13 +4,29 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
+    
     public float speed = 20;
 
-
-    private void Update()
+    void Start()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
         Destroy(gameObject, 3);
     }
 
+    void Update()
+    {
+        transform.position += transform.forward * speed * Time.deltaTime;
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        var health = other.gameObject.GetComponent<Health>();
+        if (health != null)
+        {
+            health.Damage(10);
+        }
+
+        Destroy(gameObject);
+    }
 }
+
+
