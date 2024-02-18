@@ -10,7 +10,7 @@ public class Rocket : MonoBehaviour
 
     void Start()
     {
-        Destroy(gameObject, 3);
+        //Destroy(gameObject, 3);
     }
 
     void Update()
@@ -23,9 +23,10 @@ public class Rocket : MonoBehaviour
         var health = other.gameObject.GetComponent<Health>();
         if (health != null)
         {
-            health.Damage(10);
+            health.Damage(20);
         }
         Instantiate(explosion, transform.position, transform.rotation);
+        //transform.forward = other.contacts[0].normal;
         Destroy(gameObject);
     }
 }
