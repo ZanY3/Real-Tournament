@@ -1,18 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int hp;
+    public int maxHp = 100;
+
     void Start()
     {
-        
+        if (hp == 0) hp = maxHp;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Damage(int damage)
     {
-        
+        hp -= damage;
+        if (hp <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }
