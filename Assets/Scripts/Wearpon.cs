@@ -17,6 +17,10 @@ public class Wearpon : MonoBehaviour
 
     void Update()
     {
+        if(ammo <= 0)
+        {
+            ammo = 0;
+        }
         if (Input.GetKeyDown(KeyCode.Mouse0))
             // manual shooting
             if (!isAutomatic && Input.GetKeyDown(KeyCode.Mouse0))
