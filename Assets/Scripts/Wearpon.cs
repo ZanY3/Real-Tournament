@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Wearpon : MonoBehaviour
 {
@@ -14,10 +15,21 @@ public class Wearpon : MonoBehaviour
     public float fireInterval = 0.1f;
     public float fireCooldown;
     public float reloadTime = 2;
+    public float bulletsPerShot = 1;
+    public float recoilAngle = 5;
+
+    public UnityEvent onRightClick;
+    public UnityEvent onShoot;
+    public UnityEvent onReload;
 
     void Update()
     {
-        if(ammo <= 0)
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            onRightClick.Invoke();
+        }
+
+        if (ammo <= 0)
         {
             ammo = 0;
         }
@@ -40,7 +52,7 @@ public class Wearpon : MonoBehaviour
         fireCooldown -= Time.deltaTime;
     }
 
-    void Shoot()
+    public void Shoot()
     {
         if (isReloading) return;
         if (ammo <= 0)
@@ -48,17 +60,23 @@ public class Wearpon : MonoBehaviour
             if(allAmmo > 0)
             {
                 Reload();
-                Instantiate(bulletPrefab, transform.position, transform.rotation);
                 return;
             }
         }
         if (fireCooldown > 0) return;
-
+        onShoot.Invoke();
         ammo--;
         fireCooldown = fireInterval;
-        if(allAmmo > 0)
+        for (int i = 0; i < bulletsPerShot; i++)
         {
-            Instantiate(bulletPrefab, transform.position, transform.rotation);
+            if(ammo > 0)
+            {
+                var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+                var offsetX = Random.Range(-recoilAngle, recoilAngle);
+                var offsetY = Random.Range(-recoilAngle, recoilAngle);
+                bullet.transform.eulerAngles += new Vector3(offsetX, offsetY , 0);
+
+            }
         }
     }
 
@@ -71,6 +89,7 @@ public class Wearpon : MonoBehaviour
         isReloading = true;
 
         print("Reloading...");
+        onReload.Invoke();
         await new WaitForSeconds(reloadTime);
         print("Reloaded!");
 

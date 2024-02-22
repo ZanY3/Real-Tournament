@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     public int hp;
     public int maxHp = 100;
+
+    public UnityEvent onDie;
+    public UnityEvent onDamage;
 
     void Start()
     {
@@ -13,8 +17,10 @@ public class Health : MonoBehaviour
     public void Damage(int damage)
     {
         hp -= damage;
+        onDamage.Invoke();
         if (hp <= 0)
         {
+            onDie.Invoke();
             Die();
         }
     }

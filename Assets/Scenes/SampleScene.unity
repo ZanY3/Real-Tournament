@@ -245,6 +245,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   maxHp: 100
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &314659960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,6 +1016,7 @@ GameObject:
   - component: {fileID: 1018548651}
   - component: {fileID: 1018548650}
   - component: {fileID: 1018548653}
+  - component: {fileID: 1018548654}
   m_Layer: 6
   m_Name: Wearpon
   m_TagString: Untagged
@@ -1121,14 +1128,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 801529605448851903, guid: add874357d61c3347803af532c99ef7a,
     type: 3}
-  ammo: 5
-  maxAmmo: 5
-  allAmmo: 20
+  ammo: 6
+  maxAmmo: 6
+  allAmmo: 5
   isReloading: 0
   isAutomatic: 1
   fireInterval: 0.6
   fireCooldown: 1
   reloadTime: 3
+  bulletsPerShot: 1
+  recoilAngle: 5
+  onRightClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1018548654}
+        m_TargetAssemblyTypeName: BurstMod, Assembly-CSharp
+        m_MethodName: Burst
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onShoot:
+    m_PersistentCalls:
+      m_Calls: []
+  onReload:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1018548654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018548648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c6105c61b1c3a4487a6abd2c5e8da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wearpon: {fileID: 1018548653}
+  isBurst: 0
 --- !u!1 &1219243637
 GameObject:
   m_ObjectHideFlags: 0
