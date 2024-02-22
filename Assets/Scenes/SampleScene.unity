@@ -1121,8 +1121,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 801529605448851903, guid: add874357d61c3347803af532c99ef7a,
     type: 3}
-  ammo: 15
-  maxAmmo: 15
+  ammo: 5
+  maxAmmo: 5
+  allAmmo: 20
   isReloading: 0
   isAutomatic: 1
   fireInterval: 0.6

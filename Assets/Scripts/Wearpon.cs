@@ -7,7 +7,8 @@ public class Wearpon : MonoBehaviour
     public GameObject bulletPrefab;
 
     public int ammo;
-    public int maxAmmo = 10;
+    public int maxAmmo = 5; // in clip
+    public int allAmmo = 25;
     public bool isReloading;
     public bool isAutomatic;
     public float fireInterval = 0.1f;
@@ -40,19 +41,26 @@ public class Wearpon : MonoBehaviour
         if (isReloading) return;
         if (ammo <= 0)
         {
-            Instantiate(bulletPrefab, transform.position, transform.rotation);
-            Reload();
-            return;
+            if(allAmmo > 0)
+            {
+                Reload();
+                Instantiate(bulletPrefab, transform.position, transform.rotation);
+                return;
+            }
         }
         if (fireCooldown > 0) return;
 
         ammo--;
         fireCooldown = fireInterval;
-        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        if(allAmmo > 0)
+        {
+            Instantiate(bulletPrefab, transform.position, transform.rotation);
+        }
     }
 
     async void Reload()
     {
+        if (ammo == 0 && allAmmo == 0) return;
         if (ammo == maxAmmo) return;
         if (isReloading) return;
 
@@ -62,7 +70,17 @@ public class Wearpon : MonoBehaviour
         await new WaitForSeconds(reloadTime);
         print("Reloaded!");
 
+        
         isReloading = false;
+        if(ammo <= 0)
+        {
+            allAmmo -= maxAmmo;
+        }
+        if (ammo > 0)
+        {
+            allAmmo -= maxAmmo - ammo;
+        }
         ammo = maxAmmo;
+        
     }
 }
