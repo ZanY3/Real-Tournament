@@ -28,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.964013, y: 0.581, z: 8.432088}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7678684048947072482}
   - {fileID: 4274575945284546473}
@@ -48,8 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  explosion: {fileID: 3995940964130297852, guid: 8dd1cdf931288394ab85b0512657d919,
-    type: 3}
+  explosion: {fileID: 0}
 --- !u!54 &8518538250551472566
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -72,7 +71,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0

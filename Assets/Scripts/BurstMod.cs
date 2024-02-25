@@ -14,14 +14,15 @@ public class BurstMod : MonoBehaviour
 
         if (isBursting)
         {
-            weapon.bulletsPerShot = 3;
-            weapon.spreadAngle = 5;
+            weapon.bulletsPerShot = 2;
+            weapon.spreadAngle = 1.5f;
             weapon.isAutomatic = false;
+            weapon.fireInterval = 0.5f;
         }
         else
         {
             weapon.bulletsPerShot = 1;
-            weapon.spreadAngle = 0;
+            weapon.spreadAngle = 2;
             weapon.isAutomatic = true;
         }
     }

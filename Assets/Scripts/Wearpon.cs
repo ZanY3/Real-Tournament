@@ -17,6 +17,9 @@ public class Weapon : MonoBehaviour
     public float bulletsPerShot = 1;
     public float spreadAngle = 5;
 
+    public GameObject rocketAfterShoot;
+    public GameObject shootLight;
+
     public UnityEvent onRightClick;
     public UnityEvent onShoot;
     public UnityEvent onReload;
@@ -46,7 +49,7 @@ public class Weapon : MonoBehaviour
         fireCooldown -= Time.deltaTime;
     }
 
-    public void Shoot()
+    async public void Shoot()
     {
         if (isReloading) return;
         if (clipAmmo <= 0)
@@ -56,11 +59,17 @@ public class Weapon : MonoBehaviour
         }
         if (fireCooldown > 0) return;
 
+        shootLight.gameObject.SetActive(true);
+        await new WaitForSeconds(0.05f);
+        shootLight.gameObject.SetActive(false);
+
         onShoot.Invoke();
+        Instantiate(rocketAfterShoot, transform.position, Quaternion.identity);
         clipAmmo--;
         fireCooldown = fireInterval;
         for (int i = 0; i < bulletsPerShot; i++)
         {
+
             var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
             var offsetX = Random.Range(-spreadAngle, spreadAngle);
             var offsetY = Random.Range(-spreadAngle, spreadAngle);
