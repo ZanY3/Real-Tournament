@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class BurstMod : MonoBehaviour
 {
-    public Wearpon wearpon;
-    public bool isBurst;
+
+    public Weapon weapon;
+    public bool isBursting;
 
     public void Burst()
     {
-        isBurst = !isBurst;
-        if (isBurst)
-        {
-            wearpon.bulletsPerShot = 4;
-            wearpon.recoilAngle = 5;
-            wearpon.reloadTime = 3;
-            wearpon.isAutomatic = false;
+        isBursting = !isBursting;
 
-        }
-        if (!isBurst)
+        if (isBursting)
         {
-            wearpon.reloadTime = 2;
-            wearpon.bulletsPerShot = 1;
-            wearpon.recoilAngle = 1;
-            wearpon.isAutomatic = true;
+            weapon.bulletsPerShot = 3;
+            weapon.spreadAngle = 5;
+            weapon.isAutomatic = false;
+        }
+        else
+        {
+            weapon.bulletsPerShot = 1;
+            weapon.spreadAngle = 0;
+            weapon.isAutomatic = true;
         }
     }
 }
