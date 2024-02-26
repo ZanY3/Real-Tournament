@@ -23,11 +23,11 @@ public class Rocket : MonoBehaviour
         var health = other.gameObject.GetComponent<Health>();
         if (health != null)
         {
-            health.Damage(20);
+            health.Damage(5);
         }
+        Destroy(gameObject);
         Instantiate(explosion, transform.position, transform.rotation);
         //transform.forward = other.contacts[0].normal;
-        Destroy(gameObject);
     }
 }
 
