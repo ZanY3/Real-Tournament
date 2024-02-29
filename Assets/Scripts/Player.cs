@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public Transform hand;
     public HUD hud;
 
+<<<<<<< Updated upstream
     private void Update()
     {
         var cam = Camera.main.transform;
@@ -34,6 +35,10 @@ public class Player : MonoBehaviour
             }
         }
 
+=======
+    void Update()
+    {
+>>>>>>> Stashed changes
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             wearpon.onRightClick.Invoke();
@@ -56,6 +61,7 @@ public class Player : MonoBehaviour
         }
         wearpon.fireCooldown -= Time.deltaTime;
     }
+<<<<<<< Updated upstream
 
     void Grab(GameObject gun)
     {
@@ -74,6 +80,8 @@ public class Player : MonoBehaviour
         wearpon.transform.parent = null;
         wearpon = null;
     }
+=======
+>>>>>>> Stashed changes
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Enemy"))
@@ -81,4 +89,7 @@ public class Player : MonoBehaviour
             health.Damage(10);
         }
     }
+ 
 }
+
+
