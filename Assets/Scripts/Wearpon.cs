@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
     public bool isReloading;
     public bool isAutomatic;
     public float fireInterval = 0.1f;
-    float fireCooldown;
+    public float fireCooldown;
     public float reloadTime = 2;
     public float bulletsPerShot = 1;
     public float spreadAngle = 5;
@@ -24,60 +24,30 @@ public class Weapon : MonoBehaviour
     public UnityEvent onShoot;
     public UnityEvent onReload;
 
-    void Update()
+    public void Shoot()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            onRightClick.Invoke();
-        }
+       if (isReloading) return;
+       if (clipAmmo <= 0)
+       {
+           Reload();
+           return;
+       }
+            if (fireCooldown > 0) return;
 
-        // manual shooting
-        if (!isAutomatic && Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Shoot();
-        }
-        // automatic shooting
-        if (isAutomatic && Input.GetKey(KeyCode.Mouse0))
-        {
-            Shoot();
-        }
+            onShoot.Invoke();
+            Instantiate(rocketAfterShoot, transform.position, Quaternion.identity);
+            clipAmmo--;
+            fireCooldown = fireInterval;
+            for (int i = 0; i < bulletsPerShot; i++)
+            {
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reload();
-        }
-        fireCooldown -= Time.deltaTime;
+                var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+                var offsetX = Random.Range(-spreadAngle, spreadAngle);
+                var offsetY = Random.Range(-spreadAngle, spreadAngle);
+                bullet.transform.eulerAngles += new Vector3(offsetX, offsetY, 0);
+            }
     }
-
-    async public void Shoot()
-    {
-        if (isReloading) return;
-        if (clipAmmo <= 0)
-        {
-            Reload();
-            return;
-        }
-        if (fireCooldown > 0) return;
-
-        shootLight.gameObject.SetActive(true);
-        await new WaitForSeconds(0.05f);
-        shootLight.gameObject.SetActive(false);
-
-        onShoot.Invoke();
-        Instantiate(rocketAfterShoot, transform.position, Quaternion.identity);
-        clipAmmo--;
-        fireCooldown = fireInterval;
-        for (int i = 0; i < bulletsPerShot; i++)
-        {
-
-            var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-            var offsetX = Random.Range(-spreadAngle, spreadAngle);
-            var offsetY = Random.Range(-spreadAngle, spreadAngle);
-            bullet.transform.eulerAngles += new Vector3(offsetX, offsetY, 0);
-        }
-    }
-
-    async void Reload()
+    public async void Reload()
     {
         if (clipAmmo == clipSize) return;
         if (isReloading) return;

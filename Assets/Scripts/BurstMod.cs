@@ -24,6 +24,7 @@ public class BurstMod : MonoBehaviour
             weapon.bulletsPerShot = 1;
             weapon.spreadAngle = 2;
             weapon.isAutomatic = true;
+            weapon.fireInterval = 0.1f;
         }
     }
 }
