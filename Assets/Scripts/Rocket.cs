@@ -23,7 +23,7 @@ public class Rocket : MonoBehaviour
         var health = other.gameObject.GetComponent<Health>();
         if (health != null)
         {
-            health.Damage(5);
+            health.Damage(15);
         }
         Destroy(gameObject);
         Instantiate(explosion, transform.position, transform.rotation);

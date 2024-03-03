@@ -14,22 +14,20 @@ public class HUD : MonoBehaviour
     private void Start()
     {
         UpdateUI();
-        wearpon.onShoot.AddListener(UpdateUI);
         health.onDamage.AddListener(UpdateUI);
     }
     //subscribe wearpon
     //unsubscribe wearpon
-    void UpdateUI()
+    public void UpdateUI()
     {
-        ammoText.text = wearpon.clipAmmo + "/" + wearpon.ammo;
         healthText.text = health.hp.ToString();
-    }
-    public void SubscribeWearpon(Weapon whatWearpon)
-    {
-        whatWearpon.onShoot.AddListener(UpdateUI);
-    }
-    public void UnSubscribeWearpon(Weapon whatWearpon)
-    {
-        whatWearpon.onShoot.RemoveListener(UpdateUI);
+        if (wearpon != null)
+        {
+            ammoText.text = wearpon.clipAmmo + "/" + wearpon.ammo;  
+        }
+        else
+        {
+            ammoText.text = " ";
+        }
     }
 }
