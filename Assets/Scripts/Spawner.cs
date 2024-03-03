@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class Spawner : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class Spawner : MonoBehaviour
     public UnityEvent onWaveStart;
     public UnityEvent onWaveEnd;
     public UnityEvent onWavesCleared;
+    public AudioSystem audioSystem;
+    public AudioClip startWaveSound;
+    public TMP_Text waveStartText;
+    int waveCount;
 
 
     void Spawn()
@@ -28,6 +33,11 @@ public class Spawner : MonoBehaviour
         {
             enemiesToSpawn = num;
             onWaveStart.Invoke();
+            audioSystem.Play(startWaveSound);
+            waveCount++;
+            waveStartText.text = "Wave " + waveCount;
+            await new WaitForSeconds(2f);
+            waveStartText.text = "";
             while(enemiesToSpawn > 0)
             {
                 await new WaitForSeconds(spawnInterval);

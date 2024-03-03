@@ -23,6 +23,9 @@ public class Weapon : MonoBehaviour
     public UnityEvent onRightClick;
     public UnityEvent onShoot;
     public UnityEvent onReload;
+    [Header("Sounds")]
+    public AudioSource source;
+    public AudioClip shootClip;
 
     public void Shoot()
     {
@@ -33,7 +36,7 @@ public class Weapon : MonoBehaviour
            return;
        }
             if (fireCooldown > 0) return;
-
+            source.PlayOneShot(shootClip);
             onShoot.Invoke();
             Instantiate(rocketAfterShoot, transform.position, Quaternion.identity);
             clipAmmo--;

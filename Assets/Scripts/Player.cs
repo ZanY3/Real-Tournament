@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public GameObject grabText;
     public HUD hud;
 
+
     private void Update()
     {
         var cam = Camera.main.transform;
