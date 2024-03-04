@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1727681, g: 0.21589208, b: 0.29782575, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 481794654}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -686,10 +686,10 @@ MonoBehaviour:
   - {fileID: 2085425218}
   - {fileID: 1496501667}
   - {fileID: 1942850770}
-  spawnInterval: 1
+  spawnInterval: 0.5
   enemiesToSpawn: 5
-  enemiesPerWave: 01000000010000000100000001000000
-  timeBetweenWaves: 2
+  enemiesPerWave: 02000000030000000200000005000000
+  timeBetweenWaves: 6
   onWaveStart:
     m_PersistentCalls:
       m_Calls: []
@@ -735,7 +735,7 @@ GameObject:
   - component: {fileID: 518259316}
   m_Layer: 0
   m_Name: Wall (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1029,7 +1029,7 @@ GameObject:
   - component: {fileID: 564238128}
   m_Layer: 0
   m_Name: Wall (4)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1545,7 +1545,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1727,7 +1727,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1966,7 +1966,7 @@ GameObject:
   - component: {fileID: 1581701922}
   m_Layer: 0
   m_Name: Wall (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2106,7 +2106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a036b07e5ebb0740af39b3daef27e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 801529605448851903, guid: add874357d61c3347803af532c99ef7a,
+  bulletPrefab: {fileID: 7823745981620901324, guid: 6a45a2dd76d18364993b0224fc84de01,
     type: 3}
   ammo: 14
   maxAmmo: 14
@@ -2119,7 +2119,7 @@ MonoBehaviour:
   reloadTime: 1.5
   bulletsPerShot: 6
   spreadAngle: 2
-  rocketAfterShoot: {fileID: 2160752460500996252, guid: fc0f3819cef05d3438511f80a2a3587e,
+  rocketAfterShoot: {fileID: 6536947084171518071, guid: cde1dd0cfb6e0d6458d08db7db612527,
     type: 3}
   shootLight: {fileID: 0}
   onRightClick:
@@ -2271,7 +2271,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
