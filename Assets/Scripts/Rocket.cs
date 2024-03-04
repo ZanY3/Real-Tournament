@@ -7,7 +7,6 @@ public class Rocket : MonoBehaviour
     
     public float speed = 20;
     public GameObject explosion;
-    public GameObject bulletHole;
 
     void Start()
     {
@@ -23,7 +22,7 @@ public class Rocket : MonoBehaviour
     {
         if(other.gameObject.name.Contains("Wall"))
         {
-            Instantiate(bulletHole, transform.position, transform.rotation);
+           //wall hit sound
         }
         var health = other.gameObject.GetComponent<Health>();
         if (health != null)

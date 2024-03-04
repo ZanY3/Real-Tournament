@@ -26,6 +26,7 @@ public class Weapon : MonoBehaviour
     [Header("Sounds")]
     public AudioSource source;
     public AudioClip shootClip;
+    public Transform lightPos;
 
     public void Shoot()
     {
@@ -49,6 +50,7 @@ public class Weapon : MonoBehaviour
                 var offsetY = Random.Range(-spreadAngle, spreadAngle);
                 bullet.transform.eulerAngles += new Vector3(offsetX, offsetY, 0);
             }
+            Instantiate(shootLight, lightPos.position, Quaternion.identity);
     }
     public async void Reload()
     {

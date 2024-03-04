@@ -9,12 +9,15 @@ public class Player : MonoBehaviour
     public Weapon wearpon;
     public LayerMask WearponLayer;
     public Transform hand;
+    public AudioSource source;
+    public AudioClip gunPickSound;
+    public AudioClip gunDropSound;
     [Header("Settings for health")]
     public Health health;
     [Header("HUD")]
     public GameObject grabText;
     public HUD hud;
-
+    
 
     private void Update()
     {
@@ -69,6 +72,7 @@ public class Player : MonoBehaviour
     void Grab(GameObject gun)
     {
         if (wearpon != null) Drop();
+        source.PlayOneShot(gunPickSound);
         wearpon = gun.GetComponent<Weapon>();
         gun.GetComponent<Rigidbody>().isKinematic = true;
         wearpon = gun.GetComponent<Collider>().GetComponent<Weapon>();
@@ -85,6 +89,7 @@ public class Player : MonoBehaviour
     {
         if (wearpon == null) return;
 
+        source.PlayOneShot(gunDropSound);
         wearpon.GetComponent<Rigidbody>().isKinematic = false;
         wearpon.transform.parent = null;
 

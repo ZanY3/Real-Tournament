@@ -19,4 +19,8 @@ public class Enemy : MonoBehaviour
     {
         agent.destination = target.position;
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        source.PlayOneShot(hitClip);
+    }
 }
